@@ -1,0 +1,15 @@
+export const techStack = [
+  "React",
+  "Next.js",
+  "Node.js",
+  "Python",
+  "AWS",
+  "Azure",
+  "GCP",
+  "Docker",
+  "Kubernetes",
+  "MySQL",
+  "PostgreSQL",
+  "MongoDB",
+  "AI/ML frameworks",
+] as const;

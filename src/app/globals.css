@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #0a3d91;
+  --brand-accent: #00d4d8;
+  --brand-navy: #051c3b;
+  --surface: #fafbfc;
+  --text: #0f172a;
+  --muted: #475569;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased;
+  background-image: radial-gradient(
+      ellipse 120% 80% at 100% -20%,
+      rgba(0, 212, 216, 0.06),
+      transparent 55%
+    ),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(10, 61, 145, 0.05), transparent 50%);
+  background-attachment: fixed;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
+  background-image: radial-gradient(
+      ellipse 100% 70% at 100% -15%,
+      rgba(0, 212, 216, 0.12),
+      transparent 50%
+    ),
+    radial-gradient(ellipse 80% 50% at 0% 0%, rgba(10, 61, 145, 0.18), transparent 45%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(5, 28, 59, 0.5), transparent 55%);
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #0a3d91 0%, #00d4d8 100%);
+  }
+
+  .dark .text-gradient {
+    background-image: linear-gradient(135deg, #5b9fff 0%, #5cf0f3 100%);
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(white, white) padding-box,
+      linear-gradient(135deg, rgba(10, 61, 145, 0.35), rgba(0, 212, 216, 0.65))
+        border-box;
+  }
+
+  .dark .border-gradient {
+    background:
+      linear-gradient(rgb(15 23 42), rgb(15 23 42)) padding-box,
+      linear-gradient(135deg, rgba(0, 212, 216, 0.45), rgba(10, 61, 145, 0.55))
+        border-box;
+  }
+
+  .glass {
+    @apply border border-white/40 bg-white/70 backdrop-blur-md;
+  }
+
+  .dark .glass {
+    @apply border-slate-700/80 bg-slate-900/70;
+  }
+
+  .poly-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30L0 30V0zm30 0h30L30 60V0zM0 30L30 0v30L0 60V30zm30 0L60 0v60H30V30z' fill='%230A3D91' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  .dark .poly-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30L0 30V0zm30 0h30L30 60V0zM0 30L30 0v30L0 60V30zm30 0L60 0v60H30V30z' fill='%2300D4D8' fill-opacity='0.06' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  .grid-glow {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0, 212, 216, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(10, 61, 145, 0.1) 0%, transparent 40%),
+      linear-gradient(rgba(0, 212, 216, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 216, 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 48px 48px, 48px 48px;
+  }
+
+  .dark .grid-glow {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0, 212, 216, 0.18) 0%, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(10, 61, 145, 0.2) 0%, transparent 40%),
+      linear-gradient(rgba(0, 212, 216, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 216, 0.06) 1px, transparent 1px);
+    background-size: auto, auto, 48px 48px, 48px 48px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.65s ease;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* focus rings for accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-accent;
+}

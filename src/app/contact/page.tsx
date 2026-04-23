@@ -8,9 +8,6 @@ export const metadata: Metadata = {
   description: `Contact ${site.legalName} — email, office address, and location in HITEC City, Hyderabad.`,
 };
 
-const mapSrc =
-  "https://www.openstreetmap.org/export/embed.html?bbox=78.3660%2C17.4488%2C78.3762%2C17.4541&layer=mapnik&marker=17.451441%2C78.371071";
-
 export default function ContactPage() {
   return (
     <div>
@@ -62,16 +59,31 @@ export default function ContactPage() {
                   City)
                 </p>
               </div>
-              <div className="overflow-hidden rounded-3xl border border-slate-100 shadow-card dark:border-slate-800">
+              <div className="group relative overflow-hidden rounded-3xl border border-slate-100 shadow-card ring-brand-primary/0 transition hover:ring-2 hover:ring-brand-accent/40 dark:border-slate-800">
                 <iframe
-                  title="Xeroura office location map"
-                  src={mapSrc}
+                  title="Office location preview (Google Maps)"
+                  src={site.address.googleMapsEmbedUrl}
                   width="100%"
                   height="280"
+                  className="pointer-events-none block bg-slate-100 dark:bg-slate-900"
                   style={{ border: 0 }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+                <a
+                  href={site.address.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent px-4 pb-4 pt-24 text-center text-sm font-semibold text-white outline-none ring-inset ring-brand-accent/0 transition hover:from-brand-navy/90 focus-visible:ring-2"
+                  aria-label="Open office location in Google Maps"
+                >
+                  <span className="drop-shadow-md">
+                    Open in Google Maps
+                    <span className="ml-1 inline-block transition group-hover:translate-x-0.5" aria-hidden>
+                      →
+                    </span>
+                  </span>
+                </a>
               </div>
             </div>
           </Reveal>

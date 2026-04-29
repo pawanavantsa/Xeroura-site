@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { logoSrc } from "@/lib/media";
 import { navLinks, site } from "@/lib/site";
@@ -13,8 +13,18 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [homeScrollProgress, setHomeScrollProgress] = useState(0);
+  /** Desktop/tablet: hide header logo while hero floating logo is visible; mobile keeps header readable. */
+  const [isMdUp, setIsMdUp] = useState(false);
   const isHome = pathname === "/";
-  const hideLogoOnHero = isHome && homeScrollProgress < 0.82;
+  const hideLogoOnHero = isHome && homeScrollProgress < 0.82 && isMdUp;
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const sync = () => setIsMdUp(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -58,15 +68,17 @@ export function SiteHeader() {
               sizes="128px"
             />
           </motion.span>
-          <span className="hidden flex-col leading-tight sm:flex">
+          <span className="flex min-w-0 flex-col leading-tight">
             <span
-              className={`font-display font-bold text-brand-navy transition-all dark:text-slate-100 ${
+              className={`truncate font-display font-bold text-brand-navy transition-all dark:text-slate-100 ${
                 hideLogoOnHero ? "text-lg sm:text-xl" : "text-sm sm:text-base"
               }`}
             >
               {site.name}
             </span>
-            <span className="text-xs text-slate-500 dark:text-slate-400">AI-first products & services</span>
+            <span className="hidden text-xs text-slate-500 dark:text-slate-400 sm:inline">
+              AI-first products & services
+            </span>
           </span>
         </Link>
 

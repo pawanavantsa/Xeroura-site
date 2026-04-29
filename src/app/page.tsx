@@ -86,7 +86,8 @@ export default function HomePage() {
   }, []);
 
   const transitionProgress = Math.min(heroHeaderProgress / 0.94, 1);
-  const startWidth = 920;
+  const isCompactWidth = viewportSize.width < 768;
+  const startWidth = isCompactWidth ? Math.min(300, viewportSize.width * 0.82) : 920;
   const startLeft = viewportSize.width * 0.5 - startWidth / 2 - 16;
   const startY = viewportSize.height * 0.5;
   const logoWidth = startWidth - (startWidth - logoTarget.width) * transitionProgress;
@@ -100,11 +101,11 @@ export default function HomePage() {
     <div
       id="home-snap-container"
       ref={containerRef}
-      className="md:h-[calc(100svh-68px)] md:overflow-y-auto md:snap-y md:snap-mandatory md:overscroll-contain"
+      className="h-[calc(100dvh-68px)] min-h-0 snap-y snap-mandatory overflow-y-auto overscroll-contain [touch-action:pan-y] [-webkit-overflow-scrolling:touch] md:h-[calc(100svh-68px)]"
     >
       <div
         aria-hidden
-        className="pointer-events-none fixed z-[5] hidden md:block"
+        className="pointer-events-none fixed z-[5]"
         style={{
           left: `${logoLeft}px`,
           top: `${logoY}px`,

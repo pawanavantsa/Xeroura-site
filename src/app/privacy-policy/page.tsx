@@ -125,6 +125,34 @@ export default function PrivacyPolicyPage() {
             </a>
           </p>
         </section>
+
+        <section>
+          <h2 className="font-display text-xl font-semibold text-brand-navy dark:text-slate-100">
+            9. Third-party photography on this website
+          </h2>
+          <p className="mt-3">
+            Some visuals on our public website are stock photographs from{" "}
+            <a
+              className="font-semibold text-brand-primary hover:text-brand-accent"
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash
+            </a>
+            , used under the{" "}
+            <a
+              className="font-semibold text-brand-primary hover:text-brand-accent"
+              href="https://unsplash.com/license"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Unsplash License
+            </a>
+            . Unsplash&apos;s terms govern use of those images; this policy otherwise applies to information we
+            collect through our site and services as described above.
+          </p>
+        </section>
       </div>
     </article>
   );

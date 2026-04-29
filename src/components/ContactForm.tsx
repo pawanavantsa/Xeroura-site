@@ -42,7 +42,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid gap-4 rounded-3xl border border-slate-100 bg-white/90 p-6 shadow-card backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 sm:p-8"
+      className="flex h-full min-h-0 flex-col gap-4 rounded-3xl border border-slate-100 bg-white/90 p-6 shadow-card backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 sm:p-8"
     >
       <h2 className="font-display text-lg font-semibold text-brand-navy dark:text-slate-100">
         Send a message
@@ -77,12 +77,12 @@ export function ContactForm() {
           name="company"
         />
       </label>
-      <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+      <label className="flex min-h-0 flex-1 flex-col text-sm font-medium text-slate-700 dark:text-slate-300">
         How can we help? *
         <textarea
           required
           rows={4}
-          className={`${inputClass} resize-y`}
+          className={`${inputClass} min-h-[7rem] flex-1 resize-y`}
           value={values.message}
           onChange={(e) => setValues((v) => ({ ...v, message: e.target.value }))}
           name="message"
@@ -97,7 +97,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-primary to-brand-accent px-8 py-3 text-sm font-semibold text-white shadow-glow-sm transition hover:shadow-glow disabled:opacity-60"
+        className="mt-auto inline-flex items-center justify-center rounded-full bg-gradient-to-r from-brand-primary to-brand-accent px-8 py-3 text-sm font-semibold text-white shadow-glow-sm transition hover:shadow-glow disabled:opacity-60"
       >
         {status === "loading" ? "Sending…" : "Submit"}
       </button>

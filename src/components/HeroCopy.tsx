@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ButtonLink } from "@/components/ButtonLink";
 import { site } from "@/lib/site";
 
@@ -23,12 +23,14 @@ const item = {
 };
 
 export function HeroCopy() {
+  const reduced = useReducedMotion();
+
   return (
     <motion.div
       className="flex-1 text-center lg:text-left"
       variants={container}
       initial="hidden"
-      animate="visible"
+      animate={reduced ? undefined : "visible"}
     >
       <motion.p
         variants={item}
@@ -38,13 +40,13 @@ export function HeroCopy() {
       </motion.p>
       <motion.h1
         variants={item}
-        className="mt-3 font-display text-4xl font-bold leading-tight tracking-tight text-brand-navy dark:text-slate-100 sm:text-5xl lg:text-[3.25rem]"
+        className="mt-3 font-display text-4xl font-bold leading-tight tracking-tight text-brand-navy dark:text-slate-100 sm:text-5xl lg:text-[3.15rem]"
       >
-        Engineering intelligent digital futures
+        Engineering intelligent AI operations that teams can trust
       </motion.h1>
       <motion.p
         variants={item}
-        className="mt-3 text-lg font-medium text-brand-primary/90"
+        className="mt-3 text-lg font-medium text-brand-primary/90 dark:text-cyan-200/90"
       >
         {site.tagline}
       </motion.p>
@@ -52,9 +54,8 @@ export function HeroCopy() {
         variants={item}
         className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-400 lg:mx-0"
       >
-        {site.legalName} is a hybrid IT company delivering AI-driven products, enterprise-grade
-        software solutions, and workforce services that empower businesses to scale with
-        confidence.
+        We transform fragmented AI initiatives into measurable business processes through product
+        engineering, enterprise software delivery, and workforce enablement.
       </motion.p>
       <motion.div
         variants={item}

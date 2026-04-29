@@ -1,19 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { logoSrc } from "@/lib/media";
-import { navLinks, site } from "@/lib/site";
-
-const legal = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-and-conditions", label: "Terms & Conditions" },
-] as const;
+import { site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-white/5 bg-brand-navy text-slate-200 dark:border-slate-800/80 dark:bg-[#020617]">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
-        <div>
-          <div className="relative mb-4 h-12 w-40">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="flex max-w-md flex-col gap-3">
+          <div className="relative h-11 w-36">
             <Image
               src={logoSrc}
               alt={`${site.name} logo`}
@@ -21,49 +16,26 @@ export function SiteFooter() {
               className="object-contain object-left drop-shadow-[0_0_28px_rgba(0,212,216,0.35)]"
             />
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-slate-400">
-            {site.tagline}. We engineer intelligent digital futures through AI
-            products, enterprise software, and workforce solutions.
-          </p>
+          <p className="text-sm leading-relaxed text-slate-400">{site.tagline}.</p>
         </div>
-
-        <div>
-          <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-white">
-            Explore
-          </h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            {navLinks.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="text-slate-400 transition hover:text-brand-accent"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-white">
-            Legal
-          </h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            {legal.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
-                  className="text-slate-400 transition hover:text-brand-accent"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-xs text-slate-500">
+        <div className="flex flex-col gap-2 text-sm text-slate-400 sm:items-end">
+          <p className="text-xs text-slate-500">
             © {new Date().getFullYear()} {site.legalName}. All rights reserved.
           </p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+            <Link href="/privacy-policy" className="text-slate-400 transition hover:text-brand-accent">
+              Privacy Policy
+            </Link>
+            <span className="text-slate-600" aria-hidden>
+              ·
+            </span>
+            <Link
+              href="/terms-and-conditions"
+              className="text-slate-400 transition hover:text-brand-accent"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

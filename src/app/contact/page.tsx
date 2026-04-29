@@ -29,9 +29,9 @@ export default function ContactPage() {
       </section>
 
       <section className="py-14 sm:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <Reveal>
-            <div className="space-y-8">
+        <div className="mx-auto grid max-w-6xl items-stretch gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <Reveal className="min-h-0 h-full">
+            <div className="flex h-full min-h-0 flex-col gap-8">
               <div className="rounded-3xl border border-slate-100 bg-slate-50/80 p-6 shadow-card dark:border-slate-800 dark:bg-slate-900/50 sm:p-8">
                 <h2 className="font-display text-lg font-semibold text-brand-navy dark:text-slate-100">
                   Email
@@ -59,14 +59,12 @@ export default function ContactPage() {
                   City)
                 </p>
               </div>
-              <div className="group relative overflow-hidden rounded-3xl border border-slate-100 shadow-card ring-brand-primary/0 transition hover:ring-2 hover:ring-brand-accent/40 dark:border-slate-800">
+              <div className="group relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border border-slate-100 shadow-card ring-brand-primary/0 transition hover:ring-2 hover:ring-brand-accent/40 dark:border-slate-800">
                 <iframe
                   title="Office location preview (Google Maps)"
                   src={site.address.googleMapsEmbedUrl}
                   width="100%"
-                  height="280"
-                  className="pointer-events-none block bg-slate-100 dark:bg-slate-900"
-                  style={{ border: 0 }}
+                  className="pointer-events-none min-h-[280px] w-full flex-1 border-0 bg-slate-100 dark:bg-slate-900"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
@@ -87,7 +85,7 @@ export default function ContactPage() {
               </div>
             </div>
           </Reveal>
-          <Reveal delayMs={120}>
+          <Reveal delayMs={120} className="flex min-h-0 h-full flex-col">
             <ContactForm />
           </Reveal>
         </div>

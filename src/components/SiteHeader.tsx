@@ -12,19 +12,42 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [homeScrollProgress, setHomeScrollProgress] = useState(0);
+  const isHome = pathname === "/";
+  const hideLogoOnHero = isHome && homeScrollProgress < 0.82;
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!isHome) {
+      setHomeScrollProgress(1);
+      return;
+    }
+
+    const onProgress = (event: Event) => {
+      const detail = (event as CustomEvent<number>).detail;
+      if (typeof detail === "number") {
+        setHomeScrollProgress(detail);
+      }
+    };
+
+    window.addEventListener("home-logo-progress", onProgress as EventListener);
+    return () => window.removeEventListener("home-logo-progress", onProgress as EventListener);
+  }, [isHome]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/75 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <motion.span
+            id="home-header-logo-anchor"
             className="relative h-10 w-28 shrink-0 sm:h-11 sm:w-32"
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 400, damping: 22 }}
+            animate={{ opacity: homeScrollProgress < 0.985 && isHome ? 0 : 1, scale: hideLogoOnHero ? 0.94 : 1 }}
+            style={{ visibility: hideLogoOnHero ? "hidden" : "visible" }}
           >
             <Image
               src={logoSrc}
@@ -36,7 +59,11 @@ export function SiteHeader() {
             />
           </motion.span>
           <span className="hidden flex-col leading-tight sm:flex">
-            <span className="font-display text-sm font-bold text-brand-navy dark:text-slate-100 sm:text-base">
+            <span
+              className={`font-display font-bold text-brand-navy transition-all dark:text-slate-100 ${
+                hideLogoOnHero ? "text-lg sm:text-xl" : "text-sm sm:text-base"
+              }`}
+            >
               {site.name}
             </span>
             <span className="text-xs text-slate-500 dark:text-slate-400">AI-first products & services</span>

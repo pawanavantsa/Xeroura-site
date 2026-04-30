@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { FormInlineError } from "@/components/FormInlineError";
+import { validateEmail, validateRequiredText } from "@/lib/formValidation";
 
 export function ContactForm() {
   const [values, setValues] = useState({
@@ -14,8 +16,30 @@ export function ContactForm() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus("loading");
     setError(null);
+    setStatus("idle");
+
+    const nameErr = validateRequiredText(values.name, "Name", 2, 120);
+    if (nameErr) {
+      setError(nameErr);
+      return;
+    }
+    const emailErr = validateEmail(values.email);
+    if (emailErr) {
+      setError(emailErr);
+      return;
+    }
+    if (values.company.trim().length > 200) {
+      setError("Company must be at most 200 characters.");
+      return;
+    }
+    const msgErr = validateRequiredText(values.message, "Message", 10, 8000);
+    if (msgErr) {
+      setError(msgErr);
+      return;
+    }
+
+    setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -41,6 +65,7 @@ export function ContactForm() {
 
   return (
     <form
+      noValidate
       onSubmit={onSubmit}
       className="flex h-full min-h-0 flex-col gap-4 rounded-3xl border border-slate-100 bg-white/90 p-6 shadow-card backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 sm:p-8"
     >
@@ -50,7 +75,6 @@ export function ContactForm() {
       <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
         Name *
         <input
-          required
           className={inputClass}
           value={values.name}
           onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
@@ -60,7 +84,6 @@ export function ContactForm() {
       <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
         Work email *
         <input
-          required
           type="email"
           className={inputClass}
           value={values.email}
@@ -80,7 +103,6 @@ export function ContactForm() {
       <label className="flex min-h-0 flex-1 flex-col text-sm font-medium text-slate-700 dark:text-slate-300">
         How can we help? *
         <textarea
-          required
           rows={4}
           className={`${inputClass} min-h-[7rem] flex-1 resize-y`}
           value={values.message}
@@ -88,9 +110,9 @@ export function ContactForm() {
           name="message"
         />
       </label>
-      {error ? <p className="text-sm text-red-600">{error}</p> : null}
+      {error ? <FormInlineError message={error} /> : null}
       {status === "success" ? (
-        <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+        <p className="rounded-2xl border border-emerald-200/90 bg-emerald-50/95 px-4 py-3 text-sm font-medium text-emerald-900 shadow-sm dark:border-emerald-500/25 dark:bg-emerald-950/40 dark:text-emerald-100 dark:shadow-card">
           Thanks—your message was received. We&apos;ll get back to you shortly.
         </p>
       ) : null}

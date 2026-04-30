@@ -50,7 +50,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/75 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-0">
           <motion.span
             id="home-header-logo-anchor"
             className="relative h-10 w-28 shrink-0 sm:h-11 sm:w-32"
@@ -68,7 +68,7 @@ export function SiteHeader() {
               sizes="128px"
             />
           </motion.span>
-          <span className="flex min-w-0 flex-col leading-tight">
+          <span className="-ml-3 flex min-w-0 flex-col leading-tight sm:-ml-4">
             <span
               className={`truncate font-display font-bold text-brand-navy transition-all dark:text-slate-100 ${
                 hideLogoOnHero ? "text-lg sm:text-xl" : "text-sm sm:text-base"

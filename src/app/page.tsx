@@ -101,7 +101,7 @@ export default function HomePage() {
     <div
       id="home-snap-container"
       ref={containerRef}
-      className="h-[calc(100dvh-68px)] min-h-0 snap-y snap-mandatory overflow-y-auto overscroll-contain [touch-action:pan-y] [-webkit-overflow-scrolling:touch] md:h-[calc(100svh-68px)]"
+      className="h-[calc(100dvh-68px)] min-h-0 snap-y snap-proximity overflow-x-hidden overflow-y-auto overscroll-contain [touch-action:pan-y] [-webkit-overflow-scrolling:touch] md:snap-mandatory md:h-[calc(100svh-68px)]"
     >
       <div
         aria-hidden
@@ -110,6 +110,7 @@ export default function HomePage() {
           left: `${logoLeft}px`,
           top: `${logoY}px`,
           width: `${logoWidth}px`,
+          maxWidth: "min(920px, calc(100vw - 1rem))",
           opacity: showTransitionLogo ? logoOpacity : 0,
           transform: "translateY(-50%)",
           transition: reduced ? "opacity 0.15s linear" : "opacity 0.08s linear",
@@ -121,7 +122,7 @@ export default function HomePage() {
 
       <section
         data-snap-section
-        className="relative flex min-h-[calc(100svh-68px)] snap-start snap-always items-center justify-center overflow-hidden bg-[#03070f] px-4 py-10 sm:px-6 lg:px-8"
+        className="relative flex h-[calc(100dvh-68px)] max-h-[calc(100dvh-68px)] min-h-[calc(100dvh-68px)] shrink-0 snap-start snap-always items-center justify-center overflow-hidden bg-[#03070f] px-4 py-10 sm:px-6 md:h-auto md:max-h-none md:min-h-[calc(100svh-68px)] lg:px-8"
       >
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,212,216,0.24),transparent_55%)]"
@@ -164,7 +165,7 @@ export default function HomePage() {
 
       <section
         data-snap-section
-        className="relative flex min-h-[calc(100svh-68px)] snap-start snap-always items-start overflow-hidden bg-[#f5f7fb] px-4 pt-14 pb-16 sm:px-6 sm:pt-16 sm:pb-20 lg:px-8 lg:pt-20"
+        className="relative flex min-h-[calc(100dvh-68px)] snap-start snap-always items-start overflow-hidden bg-[#f5f7fb] px-4 pt-14 pb-16 sm:px-6 sm:pt-16 sm:pb-20 md:min-h-[calc(100svh-68px)] lg:px-8 lg:pt-20"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#03070f]/30 via-[#03070f]/10 to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-300/35 via-slate-200/15 to-transparent" />
@@ -281,7 +282,7 @@ export default function HomePage() {
 
       <section
         data-snap-section
-        className="flex min-h-[calc(100svh-68px)] snap-start snap-always items-center bg-white px-4 py-12 sm:px-6 lg:px-8"
+        className="flex min-h-[calc(100dvh-68px)] snap-start snap-always items-center overflow-x-hidden bg-white px-4 py-12 sm:px-6 md:min-h-[calc(100svh-68px)] lg:px-8"
       >
         <div className="mx-auto grid w-full max-w-6xl items-start gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)] lg:items-start lg:gap-14">
           <motion.div
@@ -434,7 +435,7 @@ export default function HomePage() {
 
       <section
         data-snap-section
-        className="flex min-h-[calc(100svh-68px)] snap-start snap-always items-center bg-[#05070f] px-4 py-12 sm:px-6 lg:px-8"
+        className="flex min-h-[calc(100dvh-68px)] snap-start snap-always items-center overflow-x-hidden bg-[#05070f] px-4 py-12 sm:px-6 md:min-h-[calc(100svh-68px)] lg:px-8"
       >
         <div className="mx-auto grid w-full max-w-6xl items-start gap-12 lg:grid-cols-[minmax(260px,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14">
           <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:mx-0 lg:mr-auto">

@@ -46,7 +46,7 @@ export default function RootLayout({
       className={`dark ${outfit.variable} ${dmSans.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen font-sans">
+      <body className="min-h-screen overflow-x-hidden font-sans">
         <ThemeProvider>
           <SiteHeader />
           <main className="relative z-10">{children}</main>

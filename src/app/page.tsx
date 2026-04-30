@@ -183,14 +183,14 @@ export default function HomePage() {
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.35 }}
+          viewport={{ once: false, amount: 0.14 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
           className="relative mx-auto w-full max-w-6xl"
         >
           <motion.h2
             initial={reduced ? false : { opacity: 0, y: 34 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.18 }}
             transition={{ duration: 0.72, ease: "easeOut" }}
             className="text-center font-display text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl"
           >
@@ -199,7 +199,7 @@ export default function HomePage() {
           <motion.p
             initial={reduced ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.18 }}
             transition={{ duration: 0.65, delay: 0.1, ease: "easeOut" }}
             className="mx-auto mt-5 max-w-3xl text-center text-xl text-slate-500"
           >
@@ -209,7 +209,7 @@ export default function HomePage() {
           <motion.div
             initial={reduced ? false : { opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.16 }}
             transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
             className="mx-auto mt-9 flex max-w-4xl flex-wrap justify-center gap-3 md:mt-10"
           >
@@ -225,7 +225,7 @@ export default function HomePage() {
           <motion.div
             initial={reduced ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.35 }}
+            viewport={{ once: false, amount: 0.14 }}
             transition={{
               duration: 0.65,
               delay: 0.16,
@@ -240,7 +240,7 @@ export default function HomePage() {
                 key={item.title}
                 initial={reduced ? false : { opacity: 0, y: 34, scale: 0.97 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.35 }}
+                viewport={{ once: false, amount: 0.14 }}
                 transition={{
                   duration: 0.6,
                   delay: reduced ? 0 : 0.16 + idx * 0.08,
@@ -288,7 +288,7 @@ export default function HomePage() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.35 }}
+            viewport={{ once: false, amount: 0.14 }}
             variants={{
               hidden: {},
               visible: {
@@ -407,7 +407,7 @@ export default function HomePage() {
                     rotate: reduced ? 0 : card.restRotate,
                     scale: 1,
                   }}
-                  viewport={{ once: false, amount: 0.25 }}
+                  viewport={{ once: false, amount: 0.12 }}
                   transition={{
                     type: "spring",
                     stiffness: 100,
@@ -470,7 +470,7 @@ export default function HomePage() {
                     rotate: reduced ? 0 : card.restRotate,
                     scale: 1,
                   }}
-                  viewport={{ once: false, amount: 0.25 }}
+                  viewport={{ once: false, amount: 0.12 }}
                   transition={{
                     type: "spring",
                     stiffness: 105,
@@ -497,7 +497,7 @@ export default function HomePage() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.16 }}
             variants={{
               hidden: {},
               visible: {

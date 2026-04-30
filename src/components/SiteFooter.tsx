@@ -1,9 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { logoSrc } from "@/lib/media";
 import { site } from "@/lib/site";
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  if (pathname === "/") return null;
+
   return (
     <footer className="mt-20 border-t border-white/5 bg-brand-navy text-slate-200 dark:border-slate-800/80 dark:bg-[#020617]">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">

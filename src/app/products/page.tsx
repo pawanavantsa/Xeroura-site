@@ -5,10 +5,33 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: `LiveBot and Xeroura AI — intelligent, scalable products from ${site.legalName}.`,
+  description: `Xeroura CS and LiveBot — intelligent, scalable products from ${site.legalName}.`,
 };
 
 const products = [
+  {
+    name: "Xeroura CS",
+    tag: "Unified SaaS for customer services (IT & non-IT)",
+    overview:
+      "Xeroura CS is a powerful SaaS platform designed to automate customer service operations across IT and non-IT sectors. AI bots respond to customer tickets, resolve issues, and escalate only when human intervention is required.",
+    features: [
+      "AI ticket response system",
+      "Smart escalation engine",
+      "Multi-industry support",
+      "Unified dashboard",
+      "Self-service portal",
+      "Analytics & reporting",
+    ],
+    accent: "from-brand-primary to-indigo-500",
+    icon: (
+      <svg viewBox="0 0 48 48" className="h-10 w-10" fill="none" aria-hidden>
+        <rect x="6" y="8" width="36" height="10" rx="2" className="stroke-brand-primary" strokeWidth="2" />
+        <rect x="6" y="22" width="16" height="18" rx="2" className="stroke-brand-accent" strokeWidth="2" />
+        <rect x="26" y="22" width="16" height="8" rx="2" className="stroke-brand-primary/60" strokeWidth="2" />
+        <path d="M26 34h16" className="stroke-brand-primary/40" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+  },
   {
     name: "LiveBot",
     tag: "On-screen AI assistance for employees",
@@ -50,29 +73,6 @@ const products = [
           strokeWidth="2"
           strokeLinecap="round"
         />
-      </svg>
-    ),
-  },
-  {
-    name: "Xeroura AI",
-    tag: "Unified SaaS for customer services (IT & non-IT)",
-    overview:
-      "Xeroura AI is a powerful SaaS platform designed to automate customer service operations across IT and non-IT sectors. AI bots respond to customer tickets, resolve issues, and escalate only when human intervention is required.",
-    features: [
-      "AI ticket response system",
-      "Smart escalation engine",
-      "Multi-industry support",
-      "Unified dashboard",
-      "Self-service portal",
-      "Analytics & reporting",
-    ],
-    accent: "from-brand-primary to-indigo-500",
-    icon: (
-      <svg viewBox="0 0 48 48" className="h-10 w-10" fill="none" aria-hidden>
-        <rect x="6" y="8" width="36" height="10" rx="2" className="stroke-brand-primary" strokeWidth="2" />
-        <rect x="6" y="22" width="16" height="18" rx="2" className="stroke-brand-accent" strokeWidth="2" />
-        <rect x="26" y="22" width="16" height="8" rx="2" className="stroke-brand-primary/60" strokeWidth="2" />
-        <path d="M26 34h16" className="stroke-brand-primary/40" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
   },

@@ -101,7 +101,7 @@ export default function HomePage() {
     <div
       id="home-snap-container"
       ref={containerRef}
-      className="h-[calc(100dvh-68px)] min-h-0 snap-y snap-proximity overflow-x-hidden overflow-y-auto overscroll-contain [touch-action:pan-y] [-webkit-overflow-scrolling:touch] md:snap-mandatory md:h-[calc(100svh-68px)]"
+      className="h-[calc(100dvh-68px)] min-h-0 snap-y snap-mandatory overflow-x-hidden overflow-y-auto overscroll-contain [touch-action:pan-y] [-webkit-overflow-scrolling:touch] md:h-[calc(100svh-68px)]"
     >
       <div
         aria-hidden
